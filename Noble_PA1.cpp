@@ -34,19 +34,7 @@ double divide(double num1, double num2) {
 } */
 
 
-// Others
-/* int factorial(int num) {
-    for (int i = 1; i <= num; i++) {
-       num *= i;
-       return num;
-    }
-} */
-
-/* void fibonacciSequence(int num) {
-    int term1 = 0, term2 = 1, nextTerm = term1 + term2;
-    cout << "Fibonacci Sequence: " << term1 << ", " << term2 << ", ";
-} */
-
+// Other functions
 bool isPrime(int num) {
     if (num == 0 || num == 1) {
         return false;
@@ -56,10 +44,11 @@ bool isPrime(int num) {
         if (num % i == 0) {
             return false;
             break;
-        }
+        } 
     }
 }
 
+// Driver code
 int main() {
     int mainMenuChoice, numericScale;
     numericScale = 2;
@@ -78,8 +67,8 @@ int main() {
         cout << "Press 0 to EXIT." << endl;
         cin >> mainMenuChoice;
         switch(mainMenuChoice) {
+            // Basic Arithmetic
             case 1:
-                // Basic Arithmetic
                 int basicArithmeticChoice;
                 cout << "Basic Arithmetic" << endl;
                 cout << "========MENU========" << endl;
@@ -105,7 +94,7 @@ int main() {
                         cin >> minuend;
                         cout << "Enter the subtrahend: ";
                         cin >> subtrahend;
-                        cout << "The difference is: " << subtract(minuend, subtrahend) << endl;
+                        cout << "The difference is: " << fixed << setprecision(numericScale) << subtract(minuend, subtrahend) << endl;
                         break;
                     case 3:
                         double multiplicand, multiplier;
@@ -114,7 +103,7 @@ int main() {
                         cin >> multiplicand;
                         cout << "Enter the multiplier: ";
                         cin >> multiplier;
-                        cout << "The product is: " << multiply(multiplicand, multiplier) << endl;
+                        cout << "The product is: " << fixed << setprecision(numericScale) << multiply(multiplicand, multiplier) << endl;
                         break;
                     case 4:
                         double dividend, divisor;
@@ -123,14 +112,15 @@ int main() {
                         cin >> dividend;
                         cout << "Enter the divisor: ";
                         cin >> divisor;
-                        cout << "The quotient is: " << fixed << setprecision(3) << divide(dividend, divisor) << endl;
+                        cout << "The quotient is: " << fixed << setprecision(numericScale) << divide(dividend, divisor) << endl;
                         break;
                     default:
                         cout << "Invalid choice. Please try again." << endl;
                         break;
                 }
                 break;
-                
+
+            // Powers    
             case 2:
                 int powersChoice;
                 cout << "Powers" << endl;
@@ -147,21 +137,21 @@ int main() {
                         cin >> base;
                         cout << "Enter the exponent: ";
                         cin >> exponent;
-                        cout << "The result is: " << pow(base, exponent) << endl;
+                        cout << "The result is: " << fixed << setprecision(numericScale) << pow(base, exponent) << endl;
                         break;
                     case 2:
                         double squareRoot;
                         cout << "Square Root" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> squareRoot;
-                        cout << "The square root of " << squareRoot <<  " is: " << sqrt(squareRoot) << endl;
+                        cout << "The square root of " << squareRoot <<  " is: " << fixed << setprecision(numericScale) << sqrt(squareRoot) << endl;
                         break;
                     case 3:
                         double cubeRoot;
                         cout << "Cube Root" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> cubeRoot;
-                        cout << "The cube root of " << cubeRoot <<  " is: " << cbrt(cubeRoot) << endl;
+                        cout << "The cube root of " << cubeRoot <<  " is: " << fixed << setprecision(numericScale) << cbrt(cubeRoot) << endl;
                         break;
                     default:
                         cout << "Invalid choice. Please try again." << endl;
@@ -183,7 +173,7 @@ int main() {
                         cout << "Base 10 Logarithm" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> base10;
-                        cout << "log10(" << base10 <<  ") is: " << log10(base10) << endl;
+                        cout << "log10(" << base10 <<  ") is: " << fixed << setprecision(numericScale) << log10(base10) << endl;
                         break;
 
                     case 2:
@@ -191,7 +181,7 @@ int main() {
                         cout << "Natural Logarithm" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> natural;
-                        cout << "ln(" << natural << ") is: " << log(natural) << endl;
+                        cout << "ln(" << natural << ") is: " << fixed << setprecision(numericScale) << log(natural) << endl;
                         break;
                 }
                 break;
@@ -224,20 +214,39 @@ int main() {
                 cin >> othersChoice;
                 switch (othersChoice) {
                     case 1:
-                        unsigned int factorialNum;
+                        unsigned int factorialNum, fact;
+                        fact = 1;
                         cout << "Factorial" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> factorialNum;
                         if (factorialNum < 0) {
                             cout << "Error: Factorial of negative numbers is undefined." << endl;
                         } else {
-                            // cout << "The factorial of " << factorialNum << " is: " << factorial(factorialNum) << endl;
+                            for (int i = 1; i <= factorialNum; i++) {
+                                fact = fact * i;
+                            }
+                            cout << "The factorial of " << factorialNum << " is: " << fact << endl;
                         }
                         break;
 
                     case 2:
+                        int firstTerm, secondTerm, nextTerm, fibNum;
+                        firstTerm, nextTerm = 0;
+                        secondTerm = 1, 
+                        cout << "Fibonacci" << endl << "================" << endl;
+                        cout << "Enter a number: ";
+                        cin >> fibNum;
 
-
+                        cout << "Fibonacci Sequence: " << firstTerm << ", " << secondTerm << ", ";
+                        nextTerm = firstTerm + secondTerm;
+                        while (nextTerm <= fibNum) {
+                            cout << nextTerm << ", ";
+                            firstTerm = secondTerm;
+                            secondTerm = nextTerm;
+                            nextTerm = firstTerm + secondTerm;
+                        }
+                        cout << endl;
+                        break;
                     case 3:
                         int primalityNum;
                         cout << "Primality Test" << endl << "================" << endl;
@@ -254,6 +263,11 @@ int main() {
                         cout << "Set Numeric Scale" << endl << "================" << endl;
                         cout << "Enter maximum decimal places: ";
                         cin >> numericScale;
+                        break;
+                    
+                    default:
+                        cout << "Invalid choice. Please try again." << endl;
+                        break;
                 }
                 break;
 
@@ -261,6 +275,7 @@ int main() {
                 cout << "Exiting..." << endl;
                 // Adds artificial exit time of 1 second
                 this_thread::sleep_for(chrono::seconds(1));
+                cout << "Bye!" << endl;
                 return 0;
 
             default:
