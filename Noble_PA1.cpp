@@ -3,7 +3,7 @@
 // Email Address: tnoble@gbox.adnu.edu.ph
 // ProgAss Number: 2
 // Description: A command-line based calculator with arithmetic, exponentiation, logarithmic, trigonometric, and conversion functionalities.
-// Last Changed: September 25, 2024
+// Last Changed: September 26, 2024
 
 #include <iostream>
 #include <iomanip>
@@ -28,19 +28,21 @@ double divide(double num1, double num2) {
     return num1 / num2;
 }
 
-// Logarithmic functions
-
 // Trigonometric functions
 
 // Number System Conversion functions
+/*int convertToBinary(int toConvert) {
+
+} */
+
 
 // Others
-int factorial(int num) {
+/* int factorial(int num) {
     for (int i = 1; i <= num; i++) {
        num *= i;
        return num;
     }
-}
+} */
 
 /* void fibonacciSequence(int num) {
     int term1 = 0, term2 = 1, nextTerm = term1 + term2;
@@ -61,8 +63,9 @@ bool isPrime(int num) {
 }
 
 int main() {
+    int mainMenuChoice, numericScale;
+    numericScale = 2;
     // Splash and main menu
-    int mainMenuChoice; 
     cout << "Welcome to Calculator for Engineers!" << endl;
     // Delays showing the selections for 1 second
     this_thread::sleep_for(chrono::seconds(1));
@@ -87,47 +90,47 @@ int main() {
                 cout << "(3) Multiplication" << endl;
                 cout << "(4) Division" << endl;
                 cin >> basicArithmeticChoice;
-                    switch(basicArithmeticChoice) {
-                        case 1:
-                            double firstAddend, secondAddend;
-                            cout << "Addition" << endl << "================" << endl;
-                            cout << "Enter the first addend: ";
-                            cin >> firstAddend;
-                            cout << "Enter the second addend: ";
-                            cin >> secondAddend;
-                            cout << "The sum is: " << add(firstAddend, secondAddend) << endl;
-                            break;
-                        case 2:
-                            double subtrahend, minuend;
-                            cout << "Subtraction" << endl << "================" << endl;
-                            cout << "Enter the minuend: ";
-                            cin >> minuend;
-                            cout << "Enter the subtrahend: ";
-                            cin >> subtrahend;
-                            cout << "The difference is: " << subtract(minuend, subtrahend) << endl;
-                            break;
-                        case 3:
-                            double multiplicand, multiplier;
-                            cout << "Multiplication" << endl << "================" << endl;
-                            cout << "Enter the multiplicand: ";
-                            cin >> multiplicand;
-                            cout << "Enter the multiplier: ";
-                            cin >> multiplier;
-                            cout << "The product is: " << multiply(multiplicand, multiplier) << endl;
-                            break;
-                        case 4:
-                            double dividend, divisor;
-                            cout << "Division" << endl << "================" << endl;
-                            cout << "Enter the dividend: ";
-                            cin >> dividend;
-                            cout << "Enter the divisor: ";
-                            cin >> divisor;
-                            cout << "The quotient is: " << fixed << setprecision(3) << divide(dividend, divisor) << endl;
-                            break;
-                        default:
-                            cout << "Invalid choice. Please try again." << endl;
-                            break;
-                    }
+                switch(basicArithmeticChoice) {
+                    case 1:
+                        double firstAddend, secondAddend;
+                        cout << "Addition" << endl << "================" << endl;
+                        cout << "Enter the first addend: ";
+                        cin >> firstAddend;
+                        cout << "Enter the second addend: ";
+                        cin >> secondAddend;
+                        cout << "The sum is: " << fixed << setprecision(numericScale) << add(firstAddend, secondAddend) << endl;
+                        break;
+                    case 2:
+                        double subtrahend, minuend;
+                        cout << "Subtraction" << endl << "================" << endl;
+                        cout << "Enter the minuend: ";
+                        cin >> minuend;
+                        cout << "Enter the subtrahend: ";
+                        cin >> subtrahend;
+                        cout << "The difference is: " << subtract(minuend, subtrahend) << endl;
+                        break;
+                    case 3:
+                        double multiplicand, multiplier;
+                        cout << "Multiplication" << endl << "================" << endl;
+                        cout << "Enter the multiplicand: ";
+                        cin >> multiplicand;
+                        cout << "Enter the multiplier: ";
+                        cin >> multiplier;
+                        cout << "The product is: " << multiply(multiplicand, multiplier) << endl;
+                        break;
+                    case 4:
+                        double dividend, divisor;
+                        cout << "Division" << endl << "================" << endl;
+                        cout << "Enter the dividend: ";
+                        cin >> dividend;
+                        cout << "Enter the divisor: ";
+                        cin >> divisor;
+                        cout << "The quotient is: " << fixed << setprecision(3) << divide(dividend, divisor) << endl;
+                        break;
+                    default:
+                        cout << "Invalid choice. Please try again." << endl;
+                        break;
+                }
                 break;
                 
             case 2:
@@ -182,14 +185,22 @@ int main() {
                         cout << "Base 10 Logarithm" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> base10;
-                        cout << "log10(" << base10 <<  " is: " << log10(base10) << endl;
+                        cout << "log10(" << base10 <<  ") is: " << log10(base10) << endl;
+                        break;
+
+                    case 2:
+                        double natural;
+                        cout << "Natural Logarithm" << endl << "================" << endl;
+                        cout << "Enter a number: ";
+                        cin >> natural;
+                        cout << "ln(" << natural << ") is: " << log(natural) << endl;
                         break;
                 }
                 break;
 
-            case 4:
+            /* case 4:
                 int trigonometryChoice;
-                break;
+                break; */
 
             case 5:
                 int numberSystemConversionChoice;
@@ -213,7 +224,7 @@ int main() {
                         if (factorialNum < 0) {
                             cout << "Error: Factorial of negative numbers is undefined." << endl;
                         } else {
-                            cout << "The factorial of " << factorialNum << " is: " << factorial(factorialNum) << endl;
+                            // cout << "The factorial of " << factorialNum << " is: " << factorial(factorialNum) << endl;
                         }
                         break;
 
@@ -228,6 +239,11 @@ int main() {
                             cout << primalityNum << " is a composite number." << endl;
                         }
                         break;
+                    
+                    case 4:
+                        cout << "Set Numeric Scale" << endl << "================" << endl;
+                        cout << "Enter maximum decimal places: ";
+                        cin >> numericScale;
                 }
                 break;
 
