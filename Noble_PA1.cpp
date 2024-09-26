@@ -29,9 +29,23 @@ double divide(double num1, double num2) {
 }
 
 // Number System Conversion functions
-/*int convertToBinary(int toConvert) {
 
-} */
+// UNFINISHED
+// TODO: Fix the conversion
+void decimalToBinary(int n) {
+    int arr[11], i = 0, num = n;
+    
+    while (n != 0) {
+        arr[i] = n % 2;
+        n = n / 2;
+        i++;
+        n = n / 2;
+    }
+
+    for (i = i - 1; i >= 0; i--) {
+        cout << arr[i];
+    }
+}
 
 
 // Other functions
@@ -51,7 +65,7 @@ bool isPrime(int num) {
 // Driver code
 int main() {
     int mainMenuChoice, numericScale;
-    numericScale = 2;
+    numericScale;
     // Splash and main menu
     cout << "Welcome to Calculator for Engineers!" << endl;
     // Delays showing the selections for 1 second
@@ -159,7 +173,7 @@ int main() {
                 }
                 break;
 
-            case 3:
+            case 3: {
                 int logarithmChoice;
                 cout << "Logarithm" << endl;
                 cout << "========MENU========" << endl;
@@ -168,26 +182,42 @@ int main() {
                 cout << "(3) Any Base" << endl;
                 cin >> logarithmChoice;
                 switch (logarithmChoice) {
-                    case 1:
+                    case 1: {
                         double base10;
                         cout << "Base 10 Logarithm" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> base10;
                         cout << "log10(" << base10 <<  ") is: " << fixed << setprecision(numericScale) << log10(base10) << endl;
                         break;
+                    }
 
                     case 2:
+                    {
                         double natural;
                         cout << "Natural Logarithm" << endl << "================" << endl;
                         cout << "Enter a number: ";
                         cin >> natural;
                         cout << "ln(" << natural << ") is: " << fixed << setprecision(numericScale) << log(natural) << endl;
                         break;
+                    }
+
+                    case 3:
+                    {
+                        double baseNum, baseLog;
+                        cout << "Any Base Logarithm" << endl << "================" << endl;
+                        cout << "Enter a base: ";
+                        cin >> baseNum;
+                        cout << "Enter a number: ";
+                        cin >> baseLog;
+                        cout << "log" << baseNum << "(" << baseLog << ") is: " << fixed << setprecision(numericScale) << log(baseLog) / log(baseNum) << endl;
+                        break;
+                    }
                 }
                 break;
-
-            case 4:
+            }
+            case 4: {
                 int trigonometryChoice;
+                const int PI = 3.14159;
                 cout << "Trigonometry (with DRG)" << endl;
                 cout << "========MENU========" << endl;
                 cout << "(1) Sine" << endl;
@@ -197,13 +227,93 @@ int main() {
                 cout << "(5) Inverse Cosine" << endl;
                 cout << "(6) Inverse Tangent" << endl;
                 cin >> trigonometryChoice;
+                switch (trigonometryChoice) {
+                    case 1:
+                    {
+                        double sine;
+                        cout << "Sine" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> sine;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << sin(sine) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << sin(sine * PI / 180) << endl;
+                        break;
+                    }
+                    case 2:
+                    {
+                        double cosine;
+                        cout << "Cosine" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> cosine;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << cos(cosine) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << cos(cosine * PI / 180) << endl;
+                        break;
+                    }
+                    case 3:
+                    {
+                        double tangent;
+                        cout << "Tangent" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> tangent;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << tan(tangent) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << tan(tangent * PI / 180) << endl;
+                    }
+                    case 4:
+                    {
+                        double inverseSine;
+                        cout << "Inverse Sine" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> inverseSine;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << asin(inverseSine) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << asin(inverseSine) * 180 / PI << endl;
+                    }
+                    case 5:
+                    default: 
+                    {
+                        cout << "Invalid choice. Please try again." << endl;
+                        break;
+                    }
+                }
                 break;
-
-            case 5:
+            }
+            case 5: {
                 int numberSystemConversionChoice;
+                cout << "Number System Conversion" << endl;
+                cout << "Choose the source base:" << endl;
+                cout << "========MENU========" << endl;
+                cout << "(1) Decimal" << endl;
+                cout << "(2) Binary" << endl;
+                cout << "(3) Octal" << endl;
+                cout << "(4) Hexadecimal" << endl;
+                cin >> numberSystemConversionChoice;
+                switch (numberSystemConversionChoice) {
+                    case 1: {
+                        int decimalChoice;
+                        cout << "Source base: DECIMAL" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Binary" << endl;
+                        cout << "(2) Octal" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> decimalChoice;
+                        switch (decimalChoice) {
+                            case 1:
+                                int decimalToBinaryValue;
+                                cout << "Decimal to Binary Conversion" << endl << "================" << endl;
+                                cout << "Enter a decimal number: ";
+                                cin >> decimalToBinaryValue;
+                                cout << "Result:";
+                                decimalToBinary(decimalToBinaryValue);
+                                cout << endl;
+                                break;
+                            
+                            default:
+                                cout << "Invalid choice. Please try again." << endl;
+                                break;
+                        }
+                    }
+                }
                 break;
-
-            case 6:
+            }
+            case 6: {
                 int othersChoice;
                 cout << "Others" << endl;
                 cout << "========MENU========" << endl;
@@ -213,7 +323,7 @@ int main() {
                 cout << "(4) Set Numeric Scale" << endl;
                 cin >> othersChoice;
                 switch (othersChoice) {
-                    case 1:
+                    case 1: {
                         unsigned int factorialNum, fact;
                         fact = 1;
                         cout << "Factorial" << endl << "================" << endl;
@@ -228,8 +338,8 @@ int main() {
                             cout << "The factorial of " << factorialNum << " is: " << fact << endl;
                         }
                         break;
-
-                    case 2:
+                    }
+                    case 2: {
                         int firstTerm, secondTerm, nextTerm, fibNum;
                         firstTerm, nextTerm = 0;
                         secondTerm = 1, 
@@ -247,7 +357,8 @@ int main() {
                         }
                         cout << endl;
                         break;
-                    case 3:
+                    }
+                    case 3: {
                         int primalityNum;
                         cout << "Primality Test" << endl << "================" << endl;
                         cout << "Enter a number: ";
@@ -258,29 +369,31 @@ int main() {
                             cout << primalityNum << " is a composite number." << endl;
                         }
                         break;
-                    
-                    case 4:
+                    }
+                    case 4: {
                         cout << "Set Numeric Scale" << endl << "================" << endl;
                         cout << "Enter maximum decimal places: ";
                         cin >> numericScale;
                         break;
-                    
-                    default:
+                    }
+                    default: {
                         cout << "Invalid choice. Please try again." << endl;
                         break;
+                    }
                 }
                 break;
-
-            case 0:
+            }
+            case 0: {
                 cout << "Exiting..." << endl;
                 // Adds artificial exit time of 1 second
                 this_thread::sleep_for(chrono::seconds(1));
                 cout << "Bye!" << endl;
                 return 0;
-
-            default:
+            }
+            default: {
                 cout << "Invalid choice. Please try again." << endl;
                 break;
+            }
         }
     }
 }
