@@ -28,8 +28,6 @@ double divide(double num1, double num2) {
     return num1 / num2;
 }
 
-// Trigonometric functions
-
 // Number System Conversion functions
 /*int convertToBinary(int toConvert) {
 
@@ -198,9 +196,18 @@ int main() {
                 }
                 break;
 
-            /* case 4:
+            case 4:
                 int trigonometryChoice;
-                break; */
+                cout << "Trigonometry (with DRG)" << endl;
+                cout << "========MENU========" << endl;
+                cout << "(1) Sine" << endl;
+                cout << "(2) Cosine" << endl;
+                cout << "(3) Tangent" << endl;
+                cout << "(4) Inverse Sine" << endl;
+                cout << "(5) Inverse Cosine" << endl;
+                cout << "(6) Inverse Tangent" << endl;
+                cin >> trigonometryChoice;
+                break;
 
             case 5:
                 int numberSystemConversionChoice;
@@ -227,6 +234,9 @@ int main() {
                             // cout << "The factorial of " << factorialNum << " is: " << factorial(factorialNum) << endl;
                         }
                         break;
+
+                    case 2:
+
 
                     case 3:
                         int primalityNum;
