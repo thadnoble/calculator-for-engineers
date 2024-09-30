@@ -311,6 +311,52 @@ int main() {
                                 cout << endl;
                                 break;
                             }
+                            case 2:
+                            {
+                                int decimalToOctalValue;
+                                vector<int> octalDigits;
+                                cout << "Decimal to Octal Conversion" << endl << "================" << endl;
+                                cout << "Enter a decimal number: ";
+                                cin >> decimalToOctalValue;
+                                int tempOctalStorage = decimalToOctalValue;
+                                while (tempOctalStorage > 0) {
+                                    octalDigits.push_back(tempOctalStorage % 8);
+                                    tempOctalStorage /= 8;
+                                }
+                                cout << "Result: ";
+                                for (int i = octalDigits.size() - 1; i >= 0; i--) {
+                                    cout << octalDigits[i];
+                                }
+                                cout << endl;
+                                break;
+                            }
+                            case 3:
+                            {
+                                int decimalToHexValue;
+                                string hexValue = "";
+                                cout << "Decimal to Hexadecimal Conversion" << endl << "================" << endl;
+                                cout << "Enter a decimal number: ";
+                                cin >> decimalToHexValue;
+                                while (decimalToHexValue != 0) {
+                                    int remainder = decimalToHexValue % 16;
+                                    char hexDigit;
+                                    if (remainder < 10) {
+                                        hexDigit = remainder + 48;
+                                    } else {
+                                        hexDigit = remainder + 55;
+                                    }
+                                    hexValue = hexDigit + hexValue;
+                                    decimalToHexValue /= 16;
+                                }
+                                int i = 0, j = hexValue.size() - 1;
+                                while (i >= j) {
+                                    swap(hexValue[i], hexValue[j]);
+                                    i++;
+                                    j--;
+                                }
+                                cout << "Result: " << hexValue << endl;
+                                break;
+                            }               
                             default:
                                 cout << "Invalid choice. Please try again." << endl;
                                 break;
