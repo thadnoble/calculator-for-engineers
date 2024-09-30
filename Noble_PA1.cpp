@@ -28,26 +28,6 @@ double divide(double num1, double num2) {
     return num1 / num2;
 }
 
-// Number System Conversion functions
-
-// UNFINISHED
-// TODO: Fix the conversion
-void decimalToBinary(int n) {
-    int arr[11], i = 0, num = n;
-    
-    while (n != 0) {
-        arr[i] = n % 2;
-        n = n / 2;
-        i++;
-        n = n / 2;
-    }
-
-    for (i = i - 1; i >= 0; i--) {
-        cout << arr[i];
-    }
-}
-
-
 // Other functions
 bool isPrime(int num) {
     if (num == 0 || num == 1) {
@@ -234,8 +214,8 @@ int main() {
                         cout << "Sine" << endl << "================" << endl;
                         cout << "Enter an angle in degrees: ";
                         cin >> sine;
-                        cout << "Degrees: " << fixed << setprecision(numericScale) << sin(sine) << endl;
-                        cout << "Radians: " << fixed << setprecision(numericScale) << sin(sine * PI / 180) << endl;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << sin(sine * PI / 180) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << sin(sine) << endl;
                         break;
                     }
                     case 2:
@@ -244,8 +224,8 @@ int main() {
                         cout << "Cosine" << endl << "================" << endl;
                         cout << "Enter an angle in degrees: ";
                         cin >> cosine;
-                        cout << "Degrees: " << fixed << setprecision(numericScale) << cos(cosine) << endl;
-                        cout << "Radians: " << fixed << setprecision(numericScale) << cos(cosine * PI / 180) << endl;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << cos(cosine  * PI / 180) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << cos(cosine) << endl;
                         break;
                     }
                     case 3:
@@ -254,8 +234,8 @@ int main() {
                         cout << "Tangent" << endl << "================" << endl;
                         cout << "Enter an angle in degrees: ";
                         cin >> tangent;
-                        cout << "Degrees: " << fixed << setprecision(numericScale) << tan(tangent) << endl;
-                        cout << "Radians: " << fixed << setprecision(numericScale) << tan(tangent * PI / 180) << endl;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << tan(tangent * PI / 180) << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << tan(tangent) << endl;
                     }
                     case 4:
                     {
@@ -263,10 +243,27 @@ int main() {
                         cout << "Inverse Sine" << endl << "================" << endl;
                         cout << "Enter an angle in degrees: ";
                         cin >> inverseSine;
-                        cout << "Degrees: " << fixed << setprecision(numericScale) << asin(inverseSine) << endl;
-                        cout << "Radians: " << fixed << setprecision(numericScale) << asin(inverseSine) * 180 / PI << endl;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << asin(inverseSine) * 180 / PI << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << asin(inverseSine) << endl;
                     }
                     case 5:
+                    {
+                        double inverseCosine;
+                        cout << "Inverse Cosine" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> inverseCosine;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << acos(inverseCosine) * 180 / PI << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << acos(inverseCosine) << endl;
+                    }
+                    case 6:
+                    {
+                        double inverseTangent;
+                        cout << "Inverse Tangent" << endl << "================" << endl;
+                        cout << "Enter an angle in degrees: ";
+                        cin >> inverseTangent;
+                        cout << "Degrees: " << fixed << setprecision(numericScale) << atan(inverseTangent) * 180 / PI << endl;
+                        cout << "Radians: " << fixed << setprecision(numericScale) << atan(inverseTangent) << endl;
+                    }
                     default: 
                     {
                         cout << "Invalid choice. Please try again." << endl;
@@ -296,15 +293,24 @@ int main() {
                         cin >> decimalChoice;
                         switch (decimalChoice) {
                             case 1:
-                                int decimalToBinaryValue;
+                            {
+                                unsigned long long decimalToBinaryValue;
+                                vector<int> bitVector;
                                 cout << "Decimal to Binary Conversion" << endl << "================" << endl;
                                 cout << "Enter a decimal number: ";
                                 cin >> decimalToBinaryValue;
+                                while (decimalToBinaryValue > 0) {
+                                    bitVector.push_back(decimalToBinaryValue % 2);
+                                    decimalToBinaryValue /= 2;
+                                }
+
                                 cout << "Result:";
-                                decimalToBinary(decimalToBinaryValue);
+                                for (int i = bitVector.size() - 1; i >= 0; i--) {
+                                    cout << bitVector.at(i);
+                                }
                                 cout << endl;
                                 break;
-                            
+                            }
                             default:
                                 cout << "Invalid choice. Please try again." << endl;
                                 break;
