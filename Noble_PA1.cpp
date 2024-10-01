@@ -3,12 +3,13 @@
 // Email Address: tnoble@gbox.adnu.edu.ph
 // ProgAss Number: 2
 // Description: A command-line based calculator with arithmetic, exponentiation, logarithmic, trigonometric, and conversion functionalities.
-// Last Changed: September 26, 2024
+// Last Changed: October 1, 2024
 
 #include <iostream>
 #include <iomanip>
 #include <thread>
 #include <cmath>
+#include <vector>
 using namespace std;
 
 // Basic Arithmetic functions
@@ -157,9 +158,9 @@ int main() {
                 int logarithmChoice;
                 cout << "Logarithm" << endl;
                 cout << "========MENU========" << endl;
-                cout << "(1) Base 10" << endl;
-                cout << "(2) Natural" << endl;
-                cout << "(3) Any Base" << endl;
+                cout << "(1) Base 10 (log10)" << endl;
+                cout << "(2) Natural (ln)" << endl;
+                cout << "(3) Any Base (log_b(x))" << endl;
                 cin >> logarithmChoice;
                 switch (logarithmChoice) {
                     case 1: {
@@ -360,6 +361,31 @@ int main() {
                             default:
                                 cout << "Invalid choice. Please try again." << endl;
                                 break;
+                        }
+                    }
+                    case 2:
+                    {
+                        int binaryChoice;
+                        cout << "Source base: BINARY" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Decimal" << endl;
+                        cout << "(2) Octal" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> binaryChoice;
+                        switch (binaryChoice) {
+
+                        }
+                    }
+                    case 3: {
+                        int octalChoice;
+                        cout << "Source base: OCTAL" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Decimal" << endl; 
+                        cout << "(2) Binary" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> octalChoice;
+                        switch (octalChoice) {
+
                         }
                     }
                 }
