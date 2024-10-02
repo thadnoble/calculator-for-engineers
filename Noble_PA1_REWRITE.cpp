@@ -155,6 +155,7 @@ void inverseTangent() {
 }
 
 // Number system conversion functions
+// Decimal to other bases
 void decimalToBinary() {
     unsigned long long decimalToBinaryValue;
     vector<int> bitVector;
@@ -171,6 +172,99 @@ void decimalToBinary() {
     }
     cout << endl;
 }
+void decimalToOctal() {
+    int decimalToOctalValue;
+    vector<int> octalDigits;
+    cout << "Decimal to Octal Conversion" << endl << "================" << endl;
+    cout << "Enter a decimal number: ";
+    cin >> decimalToOctalValue;
+    int tempOctalStorage = decimalToOctalValue;
+    while (tempOctalStorage > 0) {
+        octalDigits.push_back(tempOctalStorage % 8);
+        tempOctalStorage /= 8;
+    }
+    cout << "Result: ";
+    for (int i = octalDigits.size() - 1; i >= 0; i--) {
+        cout << octalDigits[i];
+    }
+    cout << endl;
+}
+void decimalToHex() {
+    int decimalToHexValue;
+    string hexValue = "";
+    cout << "Decimal to Hexadecimal Conversion" << endl << "================" << endl;
+    cout << "Enter a decimal number: ";
+    cin >> decimalToHexValue;
+    while (decimalToHexValue != 0) {
+        int remainder = decimalToHexValue % 16;
+        char hexDigit;
+        if (remainder < 10) {
+            hexDigit = remainder + 48;
+        } else {
+            hexDigit = remainder + 55;
+        }
+        hexValue = hexDigit + hexValue;
+        decimalToHexValue /= 16;
+    }
+    int i = 0, j = hexValue.size() - 1;
+    while (i >= j) {
+        swap(hexValue[i], hexValue[j]);
+        i++;
+        j--;
+    }
+    cout << "Result: " << hexValue << endl;
+}
+// Binary to other bases
+void binaryToDecimal() {
+    int binaryToDecimalValue;
+    cout << "Binary to Decimal Conversion" << endl << "================" << endl;
+    cout << "Enter a binary number: ";
+    cin >> binaryToDecimalValue;
+    // Checks if input is a binary number by checking if contains characters that are not 0 and 1
+    if (to_string(binaryToDecimalValue).find_first_not_of("01") != string::npos) {
+        cout << "Error: Invalid binary number." << endl;
+    } else {
+        int decimalValue = 0, base = 1, tempNum = binaryToDecimalValue;
+        while (binaryToDecimalValue > 0) {
+            int lastDigit = tempNum % 10;
+            tempNum = tempNum / 10;
+            decimalValue += lastDigit * base;
+            base = base * 2;
+        }
+        cout << "Result: " << decimalValue << endl;
+    }
+}
+void binaryToOctal() {
+    int binaryToOctalValue;
+    cout << "Binary to Octal Conversion" << endl << "================" << endl;
+    cout << "Enter a binary number: ";
+    cin >> binaryToOctalValue;
+    if (to_string(binaryToOctalValue).find_first_not_of("01") != string::npos) {
+        cout << "Error: Invalid binary number." << endl;
+    } else {
+        int decimalValue = 0, base = 1, tempNum = binaryToOctalValue;
+        while (binaryToOctalValue > 0) {
+            int lastDigit = tempNum % 10;
+            tempNum = tempNum / 10;
+            decimalValue += lastDigit * base;
+            base = base * 2;
+        }
+        int i = 0;
+        long long binaryNumber = 0;
+        while (decimalValue != 0) {
+            binaryNumber += (decimalValue % 8) * pow(10, i);
+            ++i;
+            decimalValue /= 8;
+        }
+        cout << "Result: " << binaryNumber << endl;
+    }
+}
+void binaryToHex() {
+    
+}
+// Octal to other bases
+
+// Hexadecimal to other bases
 
 // Other functions
 void factorial() {
@@ -400,7 +494,135 @@ int main() {
                 cout << "(4) Hexadecimal" << endl;
                 cin >> conversionChoice;
                 switch(conversionChoice){
-                    
+                    case 1:
+                    {
+                        int decimalConversionChoice;
+                        cout << "Source base: DECIMAL" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Binary" << endl;
+                        cout << "(2) Octal" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> decimalConversionChoice;
+                        switch(decimalConversionChoice) {
+                            case 1:
+                            {
+                                decimalToBinary();
+                                break;
+                            }
+                            case 2:
+                            {
+                                decimalToOctal();
+                                break;
+                            }
+                            case 3:
+                            {
+                                decimalToHex();
+                                break;
+                            }
+                            default:
+                            {
+                                invalidChoiceError();
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 2: {
+                        int binaryConversionChoice;
+                        cout << "Source base: BINARY" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Decimal" << endl;
+                        cout << "(2) Octal" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> binaryConversionChoice;
+                        switch(binaryConversionChoice) {
+                            case 1:
+                            {
+                                binaryToDecimal();
+                                break;
+                            }
+                            case 2:
+                            {
+                                // binaryToOctal();
+                                break;
+                            }
+                            case 3:
+                            {
+                                // binaryToHex();
+                                break;
+                            }
+                            default:
+                            {
+                                invalidChoiceError();
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 3: {
+                        int octalConversionChoice;
+                        cout << "Source base: OCTAL" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Decimal" << endl; 
+                        cout << "(2) Binary" << endl;
+                        cout << "(3) Hexadecimal" << endl;
+                        cin >> octalConversionChoice;
+                        switch(octalConversionChoice) {
+                            case 1:
+                            {
+                                // octalToDecimal();
+                                break;
+                            }
+                            case 2: 
+                            {
+                                // octalToBinary();
+                                break;
+                            }
+                            case 3:
+                            {
+                                // octalToHex();
+                                break;
+                            }
+                            default:
+                            {
+                                invalidChoiceError();
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 4: {
+                        int hexConversionChoice;
+                        cout << "Source base: HEXADECIMAL" << endl << "Choose the target base:" << endl;
+                        cout << "========MENU========" << endl;
+                        cout << "(1) Decimal" << endl;
+                        cout << "(2) Binary" << endl;
+                        cout << "(3) Octal" << endl;
+                        cin >> hexConversionChoice;
+                        switch(hexConversionChoice) {
+                            case 1:
+                            {
+                                // hexToDecimal();
+                                break;
+                            }
+                            case 2:
+                            {
+                                // hexToBinary();
+                                break;
+                            }
+                            case 3:
+                            {
+                                // hexToOctal();
+                                break;
+                            }
+                            default:
+                            {
+                                invalidChoiceError();
+                                break;
+                            }
+                        }
+                        break;
+                    }
                 }
                 break;
             }
