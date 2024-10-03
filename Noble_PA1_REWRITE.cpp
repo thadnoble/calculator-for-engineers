@@ -3,7 +3,7 @@
 // Email Address: tnoble@gbox.adnu.edu.ph
 // ProgAss Number: 2
 // Description: A command-line based calculator with arithmetic, exponentiation, logarithmic, trigonometric, and conversion functionalities.
-// Last Changed: October 2, 2024
+// Last Changed: October 3, 2024
 
 #include <iostream>
 #include <cmath>
@@ -24,7 +24,7 @@ void addition() {
     cin >> firstAddend;
     cout << "Enter the second addend: ";
     cin >> secondAddend;
-    cout << "The sum is: " << fixed << setprecision(numericScale) << firstAddend + secondAddend << endl;
+    cout << "The sum is: " << firstAddend + secondAddend << endl;
 }
 void subtraction() {
     double subtrahend, minuend;
@@ -33,7 +33,7 @@ void subtraction() {
     cin >> minuend;
     cout << "Enter the subtrahend: ";
     cin >> subtrahend;
-    cout << "The difference is: " << fixed << setprecision(numericScale) << minuend - subtrahend << endl;
+    cout << "The difference is: " << minuend - subtrahend << endl;
 }
 void multiplication() {
     double multiplicand, multiplier;
@@ -42,7 +42,7 @@ void multiplication() {
     cin >> multiplicand;
     cout << "Enter the multiplier: ";
     cin >> multiplier;
-    cout << "The product is: " << fixed << setprecision(numericScale) << multiplicand * multiplier << endl;
+    cout << "The product is: " << multiplicand * multiplier << endl;
 }
 void division() {
     double dividend, divisor;
@@ -51,7 +51,7 @@ void division() {
     cin >> dividend;
     cout << "Enter the divisor: ";
     cin >> divisor;
-    cout << "The quotient is: " << fixed << setprecision(numericScale) << dividend / divisor << endl;
+    cout << "The quotient is: " << dividend / divisor << endl;
 }
 
 // Powers functions
@@ -62,21 +62,21 @@ void power() {
     cin >> base;
     cout << "Enter the exponent: ";
     cin >> exponent;
-    cout << "The result is: " << fixed << setprecision(numericScale) << pow(base, exponent) << endl;
+    cout << "The result is: " << pow(base, exponent) << endl;
 }
 void squareRoot() {
     double squareRoot;
     cout << "Square Root" << endl << "================" << endl;
     cout << "Enter a number: ";
     cin >> squareRoot;
-    cout << "The square root of " << squareRoot <<  " is: " << fixed << setprecision(numericScale) << sqrt(squareRoot) << endl;
+    cout << "The square root of " << squareRoot <<  " is: " << sqrt(squareRoot) << endl;
 }
 void cubeRoot() {
     double cubeRoot;
     cout << "Square Root" << endl << "================" << endl;
     cout << "Enter a number: ";
     cin >> cubeRoot;
-    cout << "The square root of " << cubeRoot <<  " is: " << fixed << setprecision(numericScale) << cbrt(cubeRoot) << endl;
+    cout << "The square root of " << cubeRoot <<  " is: " << cbrt(cubeRoot) << endl;
 }
 
 // Logarithms functions
@@ -85,14 +85,14 @@ void base10() {
     cout << "Base 10 Logarithm" << endl << "================" << endl;
     cout << "Enter a number: ";
     cin >> base10;
-    cout << "log10(" << base10 <<  ") is: " << fixed << setprecision(numericScale) << log10(base10) << endl;
+    cout << "log10(" << base10 <<  ") is: " << log10(base10) << endl;
 }
 void logN() {
     double natural;
     cout << "Natural Logarithms" << endl << "================"  << endl;
     cout << "Enter a number: ";
     cin >> natural;
-    cout << "ln(" << natural << ") is : " << fixed << setprecision(numericScale) << log(natural) << endl;
+    cout << "ln(" << natural << ") is : " << log(natural) << endl;
 }
 void anyBase() {
     double baseNum, baseLog;
@@ -101,7 +101,7 @@ void anyBase() {
     cin >> baseNum;
     cout << "Enter a number: ";
     cin >> baseLog;
-    cout << "log" << baseNum << "(" << baseLog << ") is: " << fixed << setprecision(numericScale) << log(baseLog) / log(baseNum) << endl;
+    cout << "log" << baseNum << "(" << baseLog << ") is: " << log(baseLog) / log(baseNum) << endl;
 }
 
 // Trigonometry functions
@@ -110,48 +110,48 @@ void sine() {
     cout << "Sine" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> sine;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << sin(sine * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << sin(sine) << endl;
+    cout << "Degrees: " << sin(sine * PI / 180) << endl;
+    cout << "Radians: " << sin(sine) << endl;
 }
 void cosine() {
     double cosine;
     cout << "Cosine" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> cosine;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << cos(cosine * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << cos(cosine) << endl;
+    cout << "Degrees: " << cos(cosine * PI / 180) << endl;
+    cout << "Radians: " << cos(cosine) << endl;
 }
 void tangent() {
     double tangent;
     cout << "Tangent" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> tangent;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << tan(tangent * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << tan(tangent) << endl;
+    cout << "Degrees: " << tan(tangent * PI / 180) << endl;
+    cout << "Radians: " << tan(tangent) << endl;
 }
 void inverseSine() {
     double inverseSine;
     cout << "Inverse Sine" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> inverseSine;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << asin(inverseSine * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << asin(inverseSine) << endl;
+    cout << "Degrees: " << asin(inverseSine * PI / 180) << endl;
+    cout << "Radians: " << asin(inverseSine) << endl;
 }
 void inverseCosine() {
     double inverseCosine;
     cout << "Inverse Cosine" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> inverseCosine;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << acos(inverseCosine * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << acos(inverseCosine) << endl;
+    cout << "Degrees: " << acos(inverseCosine * PI / 180) << endl;
+    cout << "Radians: " << acos(inverseCosine) << endl;
 }
 void inverseTangent() {
     double inverseTangent;
     cout << "Inverse Tangent" << endl << "================" << endl;
     cout << "Enter an angle in degrees: ";
     cin >> inverseTangent;
-    cout << "Degrees: " << fixed << setprecision(numericScale) << atan(inverseTangent * PI / 180) << endl;
-    cout << "Radians: " << fixed << setprecision(numericScale) << atan(inverseTangent) << endl;
+    cout << "Degrees: " << atan(inverseTangent * PI / 180) << endl;
+    cout << "Radians: " << atan(inverseTangent) << endl;
 }
 
 // Number system conversion functions
@@ -215,6 +215,17 @@ void decimalToHex() {
     cout << "Result: " << hexValue << endl;
 }
 // Binary to other bases
+// Moved conversion logic to a helper function so it can be reused
+int binaryToDecimalHelper(int n) {
+    int convertedBinary = 0, base = 1;
+    while (n > 0) {
+        int lastDigit = n % 10;
+        n = n / 10;
+        convertedBinary += lastDigit * base;
+        base = base * 2;
+    }
+    return convertedBinary;
+}
 void binaryToDecimal() {
     int binaryToDecimalValue;
     cout << "Binary to Decimal Conversion" << endl << "================" << endl;
@@ -224,14 +235,7 @@ void binaryToDecimal() {
     if (to_string(binaryToDecimalValue).find_first_not_of("01") != string::npos) {
         cout << "Error: Invalid binary number." << endl;
     } else {
-        int decimalValue = 0, base = 1, tempNum = binaryToDecimalValue;
-        while (binaryToDecimalValue > 0) {
-            int lastDigit = tempNum % 10;
-            tempNum = tempNum / 10;
-            decimalValue += lastDigit * base;
-            base = base * 2;
-        }
-        cout << "Result: " << decimalValue << endl;
+        cout << "Result: " << binaryToDecimalHelper(binaryToDecimalValue) << endl;
     }
 }
 void binaryToOctal() {
@@ -260,10 +264,40 @@ void binaryToOctal() {
     }
 }
 void binaryToHex() {
-    
+    int binaryToHexValue;
+    cout << "Binary to Hexadecimal Conversion" << endl << "================" << endl;
+    cout << "Enter a binary number: ";
+    cin >> binaryToHexValue;
+    if (to_string(binaryToHexValue).find_first_not_of("01") != string::npos) {
+        cout << "Error: Invalid binary number." << endl;
+    } else {
+        // Converts binary to decimal first and sets ostream format to hex
+        cout << "Result: " << hex << binaryToDecimalHelper(binaryToHexValue) << endl;
+    }
 }
 // Octal to other bases
-
+void octalToDecimal() {
+    int octalToDecimalValue;
+    cout << "Octal to Decimal Conversion" << endl << "================" << endl;
+    cout << "Enter an octal number: ";
+    cin >> octalToDecimalValue;
+    // Checks if input has digits not in the octal base
+    if (to_string(octalToDecimalValue).find_first_not_of("01234567") != string::npos) {
+        cout << "Error: Invalid octal number." << endl;
+    } else {
+        int n = octalToDecimalValue, decimalValue = 0, base = 1;
+        int tempNum = n;
+        while (tempNum) {
+            // Gets the last digit
+            int lastDigit = tempNum % 10;
+            tempNum = tempNum / 10;
+            // Multiplies the last digit with the base and adds it to the decimal value
+            decimalValue += lastDigit * base;
+            base = base * 8;
+        }
+        cout << "Result: " << decimalValue << endl;
+    }
+}
 // Hexadecimal to other bases
 
 // Other functions
@@ -328,9 +362,11 @@ void setNumericScale() {
     cout << "Set Numeric Scale" << endl << "================" << endl;
     cout << "Enter maximum decimal places: ";
     cin >> numericScale;
+    // Sets the numeric scale to the inputted value
     cout << fixed << setprecision(numericScale);
 }
 void invalidChoiceError() {
+    // Outputs error message when no valid choice is selected
     cout << "Invalid choice. Please try again." << endl;
 }
 
@@ -543,12 +579,12 @@ int main() {
                             }
                             case 2:
                             {
-                                // binaryToOctal();
+                                binaryToOctal();
                                 break;
                             }
                             case 3:
                             {
-                                // binaryToHex();
+                                binaryToHex();
                                 break;
                             }
                             default:
@@ -570,7 +606,7 @@ int main() {
                         switch(octalConversionChoice) {
                             case 1:
                             {
-                                // octalToDecimal();
+                                octalToDecimal();
                                 break;
                             }
                             case 2: 

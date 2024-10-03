@@ -12,24 +12,49 @@
 #include <vector>
 using namespace std;
 
-// Basic Arithmetic functions
-double add(double num1, double num2) {
-    return num1 + num2;
+// Conversion and other functions
+int binaryToDecimal(int num) {
+    int decimalValue = 0, base = 1, tempNum = num;
+    while (tempNum > 0) {
+        int lastDigit = tempNum % 10;
+        tempNum = tempNum / 10;
+        decimalValue += lastDigit * base;
+        base = base * 2;
+    }
+    return decimalValue;
 }
 
-double subtract(double num1, double num2) {
-    return num1 - num2;
+int octalToDecimal(int num) {
+    int n = num, decimalValue = 0, base = 1;
+    int temp = n;
+    while (temp) {
+        // Gets the last digit
+        int lastDigit = temp % 10;
+        temp = temp / 10;
+        // Multiplies the last digit with the correct base value and adds to decimalValue
+        decimalValue += lastDigit * base;
+        base = base * 8;
+    }
+    return decimalValue;
 }
 
-double multiply(double num1, double num2) {
-    return num1 * num2;
+long long octalToBinary(int num) {
+    int decimalNumber, i = 0;
+    long long binaryNumber = 0;
+    while (num != 0) {
+        decimalNumber += (num % 10) * pow(8, i);
+        ++i;
+        num /= 10;
+    }
+    i = 1;
+    while (decimalNumber != 0) {
+        binaryNumber += (decimalNumber % 2) * i;
+        decimalNumber /= 2;
+        i *= 10;
+    }
+    return binaryNumber;
 }
 
-double divide(double num1, double num2) {
-    return num1 / num2;
-}
-
-// Other functions
 bool isPrime(int num) {
     if (num == 0 || num == 1) {
         return false;
@@ -39,14 +64,13 @@ bool isPrime(int num) {
         if (num % i == 0) {
             return false;
             break;
-        } 
+        }
     }
 }
 
 // Driver code
 int main() {
     int mainMenuChoice, numericScale;
-    numericScale;
     // Splash and main menu
     cout << "Welcome to Calculator for Engineers!" << endl;
     // Delays showing the selections for 1 second
@@ -64,6 +88,7 @@ int main() {
         switch(mainMenuChoice) {
             // Basic Arithmetic
             case 1:
+            {
                 int basicArithmeticChoice;
                 cout << "Basic Arithmetic" << endl;
                 cout << "========MENU========" << endl;
@@ -80,7 +105,7 @@ int main() {
                         cin >> firstAddend;
                         cout << "Enter the second addend: ";
                         cin >> secondAddend;
-                        cout << "The sum is: " << fixed << setprecision(numericScale) << add(firstAddend, secondAddend) << endl;
+                        cout << "The sum is: " << fixed << setprecision(numericScale) << firstAddend + secondAddend << endl;
                         break;
                     case 2:
                         double subtrahend, minuend;
@@ -89,7 +114,7 @@ int main() {
                         cin >> minuend;
                         cout << "Enter the subtrahend: ";
                         cin >> subtrahend;
-                        cout << "The difference is: " << fixed << setprecision(numericScale) << subtract(minuend, subtrahend) << endl;
+                        cout << "The difference is: " << fixed << setprecision(numericScale) << minuend - subtrahend << endl;
                         break;
                     case 3:
                         double multiplicand, multiplier;
@@ -98,7 +123,7 @@ int main() {
                         cin >> multiplicand;
                         cout << "Enter the multiplier: ";
                         cin >> multiplier;
-                        cout << "The product is: " << fixed << setprecision(numericScale) << multiply(multiplicand, multiplier) << endl;
+                        cout << "The product is: " << fixed << setprecision(numericScale) << multiplicand * multiplier << endl;
                         break;
                     case 4:
                         double dividend, divisor;
@@ -107,16 +132,17 @@ int main() {
                         cin >> dividend;
                         cout << "Enter the divisor: ";
                         cin >> divisor;
-                        cout << "The quotient is: " << fixed << setprecision(numericScale) << divide(dividend, divisor) << endl;
+                        cout << "The quotient is: " << fixed << setprecision(numericScale) << dividend / divisor << endl;
                         break;
                     default:
                         cout << "Invalid choice. Please try again." << endl;
                         break;
                 }
                 break;
-
+            }
             // Powers    
             case 2:
+            {
                 int powersChoice;
                 cout << "Powers" << endl;
                 cout << "========MENU========" << endl;
@@ -153,8 +179,10 @@ int main() {
                         break;
                 }
                 break;
-
-            case 3: {
+            }
+            // Logarithms
+            case 3: 
+            {
                 int logarithmChoice;
                 cout << "Logarithm" << endl;
                 cout << "========MENU========" << endl;
@@ -196,9 +224,10 @@ int main() {
                 }
                 break;
             }
+            // Trigonometry
             case 4: {
                 int trigonometryChoice;
-                const int PI = 3.14159;
+                const float PI = 3.14159;
                 cout << "Trigonometry (with DRG)" << endl;
                 cout << "========MENU========" << endl;
                 cout << "(1) Sine" << endl;
@@ -273,6 +302,7 @@ int main() {
                 }
                 break;
             }
+            // Number System Conversions
             case 5: {
                 int numberSystemConversionChoice;
                 cout << "Number System Conversion" << endl;
@@ -284,7 +314,8 @@ int main() {
                 cout << "(4) Hexadecimal" << endl;
                 cin >> numberSystemConversionChoice;
                 switch (numberSystemConversionChoice) {
-                    case 1: {
+                    case 1: 
+                    {
                         int decimalChoice;
                         cout << "Source base: DECIMAL" << endl << "Choose the target base:" << endl;
                         cout << "========MENU========" << endl;
@@ -373,8 +404,56 @@ int main() {
                         cout << "(3) Hexadecimal" << endl;
                         cin >> binaryChoice;
                         switch (binaryChoice) {
-
+                            case 1:
+                            {
+                                int binaryToDecimalValue;
+                                vector<int> binaryDecimalVector;
+                                cout << "Binary to Decimal Conversion" << endl << "================" << endl;
+                                cout << "Enter a binary number: ";
+                                cin >> binaryToDecimalValue;
+                                // Checks if the input is a binary number
+                                if (to_string(binaryToDecimalValue).find_first_not_of("01") != string::npos) {
+                                    cout << "Error: Invalid binary number." << endl;
+                                } else {
+                                    cout << "Result: " << binaryToDecimal(binaryToDecimalValue) << endl;
+                                }
+                                break;
+                            }
+                            case 2:
+                            {
+                                int binaryToOctalValue;
+                                cout << "Binary to Octal Conversion" << endl << "================" << endl;
+                                cout << "Enter a binary number: ";
+                                cin >> binaryToOctalValue;
+                                if (to_string(binaryToOctalValue).find_first_not_of("01") != string::npos) {
+                                    cout << "Error: Invalid binary number." << endl;
+                                } else {
+                                    // Converts the binary to decimal first and sets the basefield format to octal
+                                    cout << "Result: " << oct << binaryToDecimal(binaryToOctalValue) << endl;
+                                }
+                                break;
+                            }
+                            case 3:
+                            {
+                                int binaryToHexValue;
+                                cout << "Binary to Hexadecimal Conversion" << endl << "================" << endl;
+                                cout << "Enter a binary number: ";
+                                cin >> binaryToHexValue;
+                                if (to_string(binaryToHexValue).find_first_not_of("01") != string::npos) {
+                                    cout << "Error: Invalid binary number." << endl;
+                                } else {
+                                    // Converts the binary to decimal first and sets the basefield format to hexadecimal
+                                    cout << "Result: " << hex << binaryToDecimal(binaryToHexValue) << endl;
+                                }
+                                break;
+                            }
+                            default:
+                            {
+                                cout << "Invalid choice. Please try again." << endl;
+                                break;
+                            }
                         }
+                        break;
                     }
                     case 3: {
                         int octalChoice;
@@ -385,12 +464,53 @@ int main() {
                         cout << "(3) Hexadecimal" << endl;
                         cin >> octalChoice;
                         switch (octalChoice) {
-
+                            case 1:
+                            {
+                                int octalToDecimalValue;
+                                cout << "Octal to Decimal Conversion" << endl << "================" << endl;
+                                cout << "Enter an octal number: ";
+                                cin >> octalToDecimalValue;
+                                // Checks if the input is an octal number
+                                if (to_string(octalToDecimalValue).find_first_not_of("01234567") != string::npos) {
+                                    cout << "Error: Invalid octal number." << endl;
+                                } else {
+                                    cout << "Result: " << octalToDecimal(octalToDecimalValue) << endl;
+                                }
+                                break;
+                            }
+                            case 2: 
+                            {
+                                int octalToBinaryValue;
+                                cout << "Octal to Binary Conversion" << endl << "================" << endl;
+                                cout << "Enter an octal number: ";
+                                cin >> octalToBinaryValue;
+                                if (to_string(octalToBinaryValue).find_first_not_of("01234567") != string::npos) {
+                                    cout << "Error: Invalid octal number." << endl;
+                                } else {
+                                    cout << "Result: " << octalToBinary(octalToBinaryValue) << endl;
+                                }
+                                break;
+                            }
+                            case 3:
+                            {
+                                int octalToHexadecimalValue;
+                                cout << "Octal to Hexadecimal Conversion" << endl << "================" << endl;
+                                cout << "Enter an octal number: ";
+                                cin >> octalToHexadecimalValue;
+                                if (to_string(octalToHexadecimalValue).find_first_not_of("01234567") != string::npos) {
+                                    cout << "Error: Invalid octal number." << endl;
+                                } else {
+                                    // Converts the octal to decimal first and sets the basefield format to hexadecimal
+                                    cout << "Result: " << hex << octalToDecimal(octalToHexadecimalValue) << endl;
+                                }
+                            }
                         }
+                        break;
                     }
                 }
                 break;
             }
+            // Others
             case 6: {
                 int othersChoice;
                 cout << "Others" << endl;
