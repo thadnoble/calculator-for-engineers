@@ -1,7 +1,6 @@
 # Calculator for Engineers
 A command-line based calculator with arithmetic, exponentiation, logarithmic, trigonometric, and conversion functionalities.
 
----
 
 ## Features
 #### Basic Arithmetic
